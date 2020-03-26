@@ -16,7 +16,7 @@ public class TestGroupMessage {
     @BeforeClass
     public static void beforeAll() throws MalformedURLException {
         app=new App();
-        app.loginWithCookie();
+        app.loginWithCookie();//登录方法必须要放入每个testcase的beforall中
     }
 
     @Test

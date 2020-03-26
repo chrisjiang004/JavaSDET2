@@ -17,8 +17,10 @@ public class TestWeWork {
     public static App app;
     @BeforeClass
     public static void beforeAll() throws MalformedURLException {
+        //启动driver并登录成功
         app=new App();
         app.loginWithCookie();
+        //数据清洗
         String phone="15600534762";
         app.toContact().delete(phone);
     }

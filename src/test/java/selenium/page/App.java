@@ -9,7 +9,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-
+//所有测试用例的入口，提供了登录功能，提供了去其他菜单的入口方法
 public class App extends BasePage {
     public App loginWithCookie() throws MalformedURLException {
         String url="https://work.weixin.qq.com/";
@@ -17,12 +17,13 @@ public class App extends BasePage {
         ChromeOptions chromeOptions=new ChromeOptions();
         chromeOptions.setCapability("pageLoadStrategy","none");
         driver = new ChromeDriver(chromeOptions);
-
-        driver=new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), chromeOptions);
+        //使用seleniumserver来启动driver，可以查看日志
+        //1.下载安装sleniumserver 2.启动seleniumsever -g 日志方式启动 3.修改driver 为RemoteWebDriver
+        //driver=new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), chromeOptions);
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(url);
-        driver.manage().window().maximize();
+        driver.get(url);//打开浏览器并访问url
+        driver.manage().window().maximize();//需要最大化窗口才能定位到元素
         driver.findElement(By.linkText("企业登录")).click();
 
         System.out.println(driver.manage().getCookies());
